@@ -1,3 +1,4 @@
+import { Button, Input, Textarea } from "@material-tailwind/react";
 export default function GeneralInfo({ generalInfo, setGeneralInfo, setGeneralInfoOut }) {
     const handleChange = (e) => {
         switch (e.target.name) {
@@ -32,22 +33,33 @@ export default function GeneralInfo({ generalInfo, setGeneralInfo, setGeneralInf
 
     return (
         <div className="input-area">
-            <div className="input-coloumn">
-                <input className="text-xs p-2.5 m-0.5" type="text" name='firstName' placeholder="First Name..." onChange={handleChange} />
-                <input className="text-xs p-2.5 m-0.5" type="text" name='lastName' placeholder="Last Name..." onChange={handleChange} />
+            <div className="input-column">
+                <div className="p-1">
+                    <Input label="First Name" name='firstName' onChange={handleChange} />
+                </div>
+                <div className="p-1">
+                    <Input label="Last Name" name='lastName' onChange={handleChange} />
+                </div>
             </div>
-            <div className="input-coloumn">
-                <input className="text-xs p-2.5 m-0.5" type="text" name="job" placeholder="Position / Job applying for?" onChange={handleChange} />
-                <input className="text-xs p-2.5 m-0.5" type="email" name="email" placeholder="E-mail Address" onChange={handleChange} />
+            <div className="p-1">
+                <Input label="Position applying for ?" name='job' onChange={handleChange} />
             </div>
             <div className="input-column">
-                <input className="text-xs p-2.5 m-0.5" type="text" name="phone" placeholder="Phone No." onChange={handleChange} />
-                <input className="text-xs p-2.5 m-0.5" type="text" name="location" placeholder="Address / Location" onChange={handleChange} />
+                <div className="p-1">
+                    <Input name="email" label="Email" onChange={handleChange} />
+                </div>
+                <div className="p-1">
+                    <Input name="phone" label="Phone" onChange={handleChange} />
+                </div>
             </div>
-            <div className="input-coloumn">
-                <textarea className="block p-2.5 w-full text-xs rounded-lg border border-gray-300" type='text' name="description" placeholder="Description" onChange={handleChange}></textarea>
+
+            <div className="p-1">
+                <Input name="location" label="Address / Location" onChange={handleChange} />
             </div>
-            <button onClick={handleSubmit} className="text-xs bg-blue-500 hover:bg-blue-700 text-white font-bold p-1.5 rounded-full"> Submit</button>
+            <div className="p-1">
+                <Textarea name="description" label="Message" onChange={handleChange} />
+            </div>
+            <Button size="sm" variant="gradient" className="rounded-full ml-2" onClick={handleSubmit}>Add</Button>
         </div>
     )
 }

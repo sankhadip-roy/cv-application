@@ -21,25 +21,25 @@ const App = () => {
 
     return (
         <>
-            <div className='container'>
+            <div className='flex flex-col items-center justify-between'>
                 <main className='main'>
-                    <form className='input-container'>
-                        <legend className="no-underline decoration-sky-500  text-sky-500">General Information</legend>
+                    <form className='input-container border-2 border-sky-500 rounded-md p-5'>
+                        <legend className="m-1 mb-3 block font-sans text-2xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">General Information</legend>
                         <GeneraralInfo generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} setGeneralInfoOut={setGeneralInfoOut} />
-                        <hr /><br />
-                        <legend className="no-underline decoration-sky-500  text-sky-500">Previous Work Experience</legend>
+                        <br />
+                        <legend className="m-1 mb-3 block font-sans text-xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">Previous Work Experience</legend>
                         <Experience workExp={workExp} setWorkExp={setWorkExp} setWorkExpOut={setWorkExpOut} />
-                        <hr /><br />
-                        <legend className="no-underline decoration-sky-500  text-sky-500">Educational Experience</legend>
+                        <br />
+                        <legend className="m-1 mb-3 block font-sans text-xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">Educational Experience</legend>
                         <Experience eduInfo={eduInfo} setEduInfo={setEduInfo} setEduInfoOut={setEduInfoOut} />
-                        <hr /><br />
+                        <br />
                         <button onClick={generatePDF} className="pdf-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
                             <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
                             <span className='text-xs'>PDF</span>
                         </button>
 
                     </form>
-                    <section className='output-container'>
+                    <section className='input-container border-2 border-sky-500 rounded-md p-5'>
                         <CVOutput generalInfoOut={generalInfoOut} eduInfoOut={eduInfoOut} workExpOut={workExpOut} setEduInfoOut={setEduInfoOut} setWorkExpOut={setWorkExpOut} />
                     </section>
                 </main>

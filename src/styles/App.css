@@ -29,30 +29,7 @@ input {
     padding: 1px 3px;
 }
 
-textarea {
-    /*Adjusting size to the size of parent div*/
-    width: 100%;
-    min-height: 100px;
-
-    font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    resize: none;
-
-    border: solid 1px rgba(33, 33, 33, 0.3);
-    border-radius: 3px;
-    padding: 1px 3px;
-}
-
 /***  CLASSES  ***/
-
-.container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .main {
     margin: 50px 30px;
@@ -60,11 +37,6 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 800px;
     column-gap: 20px;
-}
-
-.main>* {
-    border: solid 1px;
-    padding: 10px;
 }
 
 
@@ -128,21 +100,4 @@ textarea {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-.remove-btn {
-    cursor: pointer;
-    background-color: crimson;
-    color: aliceblue;
-    border: none;
-    padding: 20px 5px;
-    border-radius: 5px;
-    align-self: center;
-
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.remove-btn:hover {
-    opacity: 1;
 }

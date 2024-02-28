@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon1 from '../images/add.png'
+import { Button, Input, Textarea } from "@material-tailwind/react";
 
 export default function Experience(props) {
     const [changeToInput, setChangeToInput] = useState(false)
@@ -69,29 +70,34 @@ export default function Experience(props) {
     return (
         <>
             <div className="add-exp" id={props.eduInfo ? 'add-school' : 'add-work'} onClick={handleClickAdd} style={{ display: changeToInput ? 'none' : 'flex' }}>
-                <img src={Icon1} className="h-5 p-1" />
+                <img src={Icon1} className="h-5  p-1 -mr-2 mb-0.5 ml-1" />
                 <div className="text-xs p-1">&nbsp;&nbsp;  {props.eduInfo ? 'Add School' : 'Add Work'}</div>
             </div>
             <div className="input-area" style={{ display: !changeToInput ? 'none' : 'flex' }}>
                 <div className="input-column">
-                    <input className="text-xs p-2.5 m-0.5" type="text" name='school-job-name' placeholder={props.eduInfo ? "Nameof School / Institution / University" : "Job Title / Position"} onChange={handleChange} />
+                    <div className="p-1">
+                        <Input name='school-job-name' label={props.eduInfo ? "Name of Institution" : "Job Title / Position"} onChange={handleChange} />
+                    </div>
+                    <div className="p-1">
+                        <Input name='diploma-company-name' label={props.eduInfo ? "Diploma / Course" : 'Company Name'} onChange={handleChange} />
+                    </div>
                 </div>
-                <div className="input-column">
-                    <input className="text-xs p-2.5 m-0.5" type="text" name='diploma-company-name' placeholder={props.eduInfo ? "Diploma / Course" : 'Company Name'} onChange={handleChange} />
+                <div className="p-1">
+                    <Input name='address-location' label="Address / Location" onChange={handleChange} />
                 </div>
-                <div className="input-column">
-                    <input className="text-xs p-2.5 m-0.5" type="text" name="address-location" placeholder="Address / Location" onChange={handleChange} />
+                <div className="p-1">
+                    {!props.eduInfo ?
+
+                        <Textarea name="description" label="Give details of your job" onChange={handleChange} /> : ''
+                    }
                 </div>
-                {!props.eduInfo ?
-                    <textarea className="block p-2.5 w-full text-xs rounded-lg border border-gray-300" type='text' name="description" placeholder="Give details of your job" onChange={handleChange} /> : ''
-                }
-                <div className="input-column">
-                    <label htmlFor="year-start" className="p-1" style={{ fontSize: '14px' }}>Year Started: </label>
-                    <input className="p-1" type="date" id="year-start" name="yr-start" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
-                    <label htmlFor="year-end" className="p-1" style={{ fontSize: '14px' }}>Year Ended: </label>
-                    <input className="p-1" type="date" id='year-end' name="yr-end" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
+                <div className="flex justify-evenly">
+                    <label htmlFor="year-start" className="my-1 p-1 text-xs">Year Started: </label>
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="year-start" name="yr-start" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
+                    <label htmlFor="year-end" className=" my-1 p-1 text-xs">Year Ended: </label>
+                    <input className=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id='year-end' name="yr-end" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
                 </div>
-                <button onClick={handleSubmit} className="text-xs bg-blue-500 hover:bg-blue-700 text-white font-bold p-1.5 rounded-full">Submit</button>
+                <Button size="sm" variant="gradient" className="rounded-full ml-2" onClick={handleSubmit}>Add</Button>
             </div>
         </>
     )
