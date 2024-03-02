@@ -91,13 +91,13 @@ export default function Experience(props) {
                         <Textarea name="description" label="Give details of your job" onChange={handleChange} /> : ''
                     }
                 </div>
-                <div className="flex justify-evenly">
+                <div className="flex justify-around">
                     <label htmlFor="year-start" className="my-1 p-1 text-xs">Year Started: </label>
                     <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="year-start" name="yr-start" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
                     <label htmlFor="year-end" className=" my-1 p-1 text-xs">Year Ended: </label>
                     <input className=" appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id='year-end' name="yr-end" style={{ width: '23%', fontSize: '12px' }} onChange={handleChange} />
                 </div>
-                <Button size="sm" variant="gradient" className="rounded-full ml-2" onClick={handleSubmit}>Add</Button>
+                <Button size="sm" variant="gradient" className="ml-2" onClick={handleSubmit}>Add</Button>
             </div>
         </>
     )

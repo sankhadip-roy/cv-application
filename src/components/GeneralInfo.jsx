@@ -59,7 +59,7 @@ export default function GeneralInfo({ generalInfo, setGeneralInfo, setGeneralInf
             <div className="p-1">
                 <Textarea name="description" label="Message" onChange={handleChange} />
             </div>
-            <Button size="sm" variant="gradient" className="rounded-full ml-2" onClick={handleSubmit}>Add</Button>
+            <Button className="ml-2" onClick={handleSubmit} variant="gradient" size="sm">Add</Button>
         </div>
     )
 }
