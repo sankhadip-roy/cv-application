@@ -1,10 +1,7 @@
-import Icon1 from '../images/mail.png'
-import Icon2 from '../images/phone.png'
-import Icon3 from '../images/location.png'
-
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
 import { useEffect } from 'react'
 import { Button } from "@material-tailwind/react";
-
 
 export default function CVOutput(props) {
     useEffect(() => {
@@ -22,70 +19,77 @@ export default function CVOutput(props) {
         }
     }
     return (
-        <>
-            <div className='output-header'>
-                <div className='flex flex-col'>
-                    <span className='text-navy font-playfair font-normal text-21'>
-                        {props.generalInfoOut.firstName} <b>{props.generalInfoOut.lastName}</b>
-                    </span>
-                    <span className='font-playfair text-base font-normal'>
-                        <b>{props.generalInfoOut.job}</b>
-                    </span>
+        <div className="bg-white shadow-lg rounded-lg p-8">
+            <div className='mb-6'>
+                <h1 className='text-4xl text-gray-800 font-playfair font-bold mb-2'>
+                    {props.generalInfoOut.firstName} {props.generalInfoOut.lastName}
+                </h1>
+                <h2 className='text-2xl text-gray-600 font-playfair'>
+                    {props.generalInfoOut.job}
+                </h2>
+            </div>
+            <div className='grid grid-cols-2 gap-4 mb-6'>
+                <div className="flex items-center">
+                    <FaEnvelope className="text-gray-500 mr-2" />
+                    <span className='text-gray-600'>{props.generalInfoOut.email}</span>
                 </div>
-                <div className='contact-details'>
-                    <div className="flex items-center justify-end  gap-x-2">
-                        <span className='text-right text-xs'>{props.generalInfoOut.email}</span>
-                        <img src={Icon1} style={{ width: '17.5px', margin: '2px' }} />
-                    </div>
-                    <div className="flex items-center justify-end gap-x-2">
-                        <span className='text-right text-xs'>{props.generalInfoOut.phone}</span>
-                        <img src={Icon2} style={{ width: '15px', margin: '2px' }} />
-                    </div>
-                    <div className="flex items-center justify-end gap-x-2">
-                        <span className='text-right text-xs'>{props.generalInfoOut.location}</span>
-                        <img src={Icon3} style={{ width: '13.5px', margin: '2px' }} />
-                    </div>
+                <div className="flex items-center">
+                    <FaPhone className="text-gray-500 mr-2" />
+                    <span className='text-gray-600'>{props.generalInfoOut.phone}</span>
+                </div>
+                <div className="flex items-center">
+                    <FaMapMarkerAlt className="text-gray-500 mr-2" />
+                    <span className='text-gray-600'>{props.generalInfoOut.location}</span>
                 </div>
             </div>
-            <div className='output-header-description'>{props.generalInfoOut.description}</div>
-            <br /><hr /><br />
-            <div className='output-work-exp'>
-                <span style={{ fontFamily: 'Varela Round', fontSize: '21px', fontWeight: '400' }}>Work Experience</span>
-                {props.workExpOut.map((workItem, index) =>
-                    <>
-                        <ul className='work-exp-ul' key={index} id={index}>
-                            <Button color="red" size="sm" className='p-1.5 m-2 my-4 opacity-0 hover:opacity-100' onClick={handleRemoveWorkExp} variant="text">x</Button>
-                            <div>
-                                <li style={{ fontsize: '18px', fontWeight: '700', listStyleType: 'none' }}>{workItem.jobTitle} | {workItem.company} ({workItem.yrStart} to {workItem.yrEnd})</li>
-                                <li style={{ fontsize: '16px', fontWeight: '400', listStyleType: 'none' }}>{workItem.address}</li>
-                                <ul style={{ fontSize: '14px' }}>
-                                    <li>{workItem.description}</li>
-                                </ul>
-                            </div>
-                        </ul>
-                    </>
-                )}
+            <div className='text-gray-700 mb-8'>{props.generalInfoOut.description}</div>
+            <hr className="border-gray-300 mb-8" />
+            <div className='mb-8'>
+                <h3 className='text-2xl text-gray-800 font-varela-round mb-4 flex items-center'>
+                    <FaBriefcase className="mr-2" />
+                    Work Experience
+                </h3>
+                {props.workExpOut.map((workItem, index) => (
+                    <div className='bg-gray-50 rounded-md p-4 mb-4 relative' key={index} id={index}>
+                        <Button
+                            color="red"
+                            size="sm"
+                            className='absolute top-2 right-2 p-1 opacity-0 hover:opacity-100 transition-opacity'
+                            onClick={handleRemoveWorkExp}
+                            variant="text"
+                        >
+                            <MdClose />
+                        </Button>
+                        <h4 className='text-lg font-bold text-gray-800'>{workItem.jobTitle}</h4>
+                        <p className='text-gray-600'>{workItem.company} | {workItem.yrStart} to {workItem.yrEnd}</p>
+                        <p className='text-gray-500 text-sm mb-2'>{workItem.address}</p>
+                        <p className='text-gray-700'>{workItem.description}</p>
+                    </div>
+                ))}
             </div>
-            <br /><hr /><br />
-            <div className='output-educ-exp'>
-                <span style={{ fontFamily: 'Varela Round', fontsize: '21px', fontWeight: '400' }}>Educational Background</span>
-                {props.eduInfoOut.map((educItem, index) =>
-                    <>
-                        <ul className='work-exp-ul' key={index} id={index}>
-
-                            <Button color="red" size="sm" className='p-1.5 m-2 my-4 opacity-0 hover:opacity-100' onClick={handleRemoveWorkExp} variant="text">x</Button>
-
-                            <div>
-                                <li style={{ fontsize: '18px', fontWeight: '700', listStyleType: 'none' }}>{educItem.school} ({educItem.yrStart} to {educItem.yrEnd})</li>
-                                <li style={{ fontsize: '16px', fontWeight: '400', listStyleType: 'none' }}>{educItem.course}</li>
-                                <ul style={{ fontSize: '14px' }}>
-                                    <li>Address: {educItem.address}</li>
-                                </ul>
-                            </div>
-                        </ul>
-                    </>
-                )}
+            <hr className="border-gray-300 mb-8" />
+            <div>
+                <h3 className='text-2xl text-gray-800 font-varela-round mb-4 flex items-center'>
+                    <FaGraduationCap className="mr-2" />
+                    Educational Background
+                </h3>
+                {props.eduInfoOut.map((educItem, index) => (
+                    <div className='bg-gray-50 rounded-md p-4 mb-4 relative' key={index} id={index}>
+                        <Button
+                            color="red"
+                            size="sm"
+                            className='absolute top-2 right-2 p-1 opacity-0 hover:opacity-100 transition-opacity'
+                            onClick={handleRemoveWorkExp}
+                            variant="text"
+                        >
+                            <MdClose />
+                        </Button>
+                        <h4 className='text-lg font-bold text-gray-800'>{educItem.school}</h4>
+                        <p className='text-gray-600'>{educItem.course} | {educItem.yrStart} to {educItem.yrEnd}</p>
+                        <p className='text-gray-500 text-sm'>{educItem.address}</p>
+                    </div>
+                ))}
             </div>
-        </>
+        </div>
     )
 }

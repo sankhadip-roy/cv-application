@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { Button } from "@material-tailwind/react";
+
 const App = () => {
   // general information
   const [generalInfo, setGeneralInfo] = useState({
@@ -58,58 +59,54 @@ const App = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-between">
-        <main className="main">
-          <form className="input-container border-2 border-sky-500 rounded-md p-5">
-            <legend className="m-1 mb-3 block font-sans text-2xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">
-              General Information
-            </legend>
-            <GeneraralInfo
-              generalInfo={generalInfo}
-              setGeneralInfo={setGeneralInfo}
-              setGeneralInfoOut={setGeneralInfoOut}
-            />
-            <br />
-            <legend className="m-1 mb-3 block font-sans text-xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">
-              Previous Work Experience
-            </legend>
-            <Experience
-              workExp={workExp}
-              setWorkExp={setWorkExp}
-              setWorkExpOut={setWorkExpOut}
-            />
-            <br />
-            <legend className="m-1 mb-3 block font-sans text-xl antialiased font-semibold leading-tight tracking-normal text-transparent bg-gradient-to-tr from-blue-400 to-blue-400 bg-clip-text">
-              Educational Experience
-            </legend>
-            <Experience
-              eduInfo={eduInfo}
-              setEduInfo={setEduInfo}
-              setEduInfoOut={setEduInfoOut}
-            />
-            <br />
-          </form>
-          <section
-            className="input-container border-2 border-sky-500 rounded-md p-5"
-            id="divToConvert"
-          >
-            <CVOutput
-              generalInfoOut={generalInfoOut}
-              eduInfoOut={eduInfoOut}
-              workExpOut={workExpOut}
-              setEduInfoOut={setEduInfoOut}
-              setWorkExpOut={setWorkExpOut}
-            />
-          </section>
-          <Button
-            className="w-20 h-9 justify-items-center text-center mt-1"
-            onClick={generatePdf}
-            variant="gradient"
-            size="sm"
-          >
-            <div className=" flex">
-              {" "}
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <main className="flex-grow">
+        <div className="max-w-7xl mx-auto py-1 sm:px-6 lg:px-8">
+          <div className="main">
+            <form className="input-container bg-white shadow-md rounded-lg p-6 border border-gray-200">
+              <section className="mb-8">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">General Information</h2>
+                <GeneraralInfo
+                  generalInfo={generalInfo}
+                  setGeneralInfo={setGeneralInfo}
+                  setGeneralInfoOut={setGeneralInfoOut}
+                />
+              </section>
+              <section className="mb-8">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Previous Work Experience</h2>
+                <Experience
+                  workExp={workExp}
+                  setWorkExp={setWorkExp}
+                  setWorkExpOut={setWorkExpOut}
+                />
+              </section>
+              <section>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Educational Experience</h2>
+                <Experience
+                  eduInfo={eduInfo}
+                  setEduInfo={setEduInfo}
+                  setEduInfoOut={setEduInfoOut}
+                />
+              </section>
+            </form>
+            <section
+              className="input-container bg-white shadow-md rounded-lg p-6 border border-gray-200"
+              id="divToConvert"
+            >
+              <CVOutput
+                generalInfoOut={generalInfoOut}
+                eduInfoOut={eduInfoOut}
+                workExpOut={workExpOut}
+                setEduInfoOut={setEduInfoOut}
+                setWorkExpOut={setWorkExpOut}
+              />
+            </section>
+          </div>
+          <div className="mt-6 text-center">
+            <Button
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              onClick={generatePdf}
+            >
               <svg
                 className="fill-current w-4 h-4 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,15 +114,19 @@ const App = () => {
               >
                 <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
               </svg>
-              <p>Pdf</p>{" "}
-            </div>
-          </Button>
-        </main>
-        <footer className="footer text-sm hover:text-base">
-          2024 {String.fromCharCode(169)} Sankhadip Roy
-        </footer>
-      </div>
-    </>
+              Generate PDF
+            </Button>
+          </div>
+        </div>
+      </main>
+      <footer className="bg-white shadow-md mt-8">
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-500 text-sm">
+            2024 &copy; Sankhadip Roy
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 };
 

@@ -8,7 +8,12 @@ export default withMT({
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
+        'varela-round': ['Varela Round', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 });
